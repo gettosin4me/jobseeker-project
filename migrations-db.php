@@ -1,9 +1,12 @@
 <?php
 
+$dotenv = Dotenv\Dotenv::create(__DIR__ . '/');
+$dotenv->load();
+
 return [
-    'dbname' => 'jobseeker',
-    'user' => 'root',
-    'password' => '',
-    'host' => 'localhost',
+    'dbname' => getenv('DB_NAME'),
+    'user' => getenv('DB_USER'),
+    'password' => getenv('DB_PASSWORD'),
+    'host' => getenv('DB_HOST'),
     'driver' => 'pdo_mysql',
 ];
