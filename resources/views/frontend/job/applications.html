@@ -1,0 +1,56 @@
+{% extends "frontend/layouts/app.html" %}
+
+{% block title %}Jobs{% endblock %}
+{% block head %}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block app_content %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Jobs</h1>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Applicant Name</th>
+                  <th>Job Title</th>
+                  <th>Range</th>
+                  <th>Applicant Course of Study</th>
+                  <th>Applicant Highest Qualification</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for index, user in job.users %}
+                    <tr>
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        <td>{{ job.title }}</td>
+                        <td>{{ job.salary_range }}</td>
+                        <td>{{ user.course_of_study | capitalize }}</td>
+                        <td>{{ user.highest_qualification | capitalize }}</td>
+                        <td>{{ user.pivot.status | capitalize }}</td>
+                        <td>
+                            <div class="dropdown show">
+                                <a class="btn btn-secondary dropdown-toggle text-info" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item text-primary" href="/jobs/applications/{{ user.pivot.id }}/update/approved">Accept</a>
+                                    <a class="dropdown-item text-danger" href="/jobs/applications/{{ user.pivot.id }}/update/rejected">Reject</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

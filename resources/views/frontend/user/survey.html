@@ -1,0 +1,189 @@
+{% extends "frontend/layouts/template.html" %}
+
+{% block title %}Jobseeker Home{% endblock %}
+{% block head %}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <form action="{{ current_path() }}" method="post" class="form-horizontal">
+        <h3>Please, take your time to complete this survey</h3>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">
+                    1. How many time(s) do you get tough feedback from the organization you applied to in the past?
+                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="feedback" value="1">
+                    <label class="form-check-label" for="exampleRadios1">
+                        Once
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="feedback" value="2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Twice
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="feedback" value="3">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Thrice
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="feedback" value="4">
+                    <label class="form-check-label" for="exampleRadios3">
+                        More than
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">
+                    2. How do you feel after the feedback?
+                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="feelings" value="1">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Encouraged
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="feelings" value="0">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Dejected
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">
+                    3. If you had go then for the job then, would you have offered them your best?
+                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="best" value="1">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Somehow
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="best" value="2">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Yes
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="best" value="0">
+                    <label class="form-check-label" for="exampleRadios3">
+                        No
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">
+                    4. What possibly would be missing for not employing you then?
+                </label>
+                <input type="text" class="form-control" name="missing" placeholder="Enter email">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">
+                    5. Where do you intend to work?
+                </label>
+                <input type="text" value="{{ val('date_of_birth') }}" class="form-control" name="date_of_birth" placeholder="DD-MM-YYYY">
+                {% if has_error('date_of_birth') %}<span class="text-danger">{{ error('date_of_birth') }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">
+                    6. Owing to your personality, where do you think you fit?
+                </label>
+                <input type="text" class="form-control" name="missing" placeholder="Enter email">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">
+                    7. Considering your background and not leaving your personality out, what kind of job do you want now?
+                </label>
+                <input type="text" value="{{ val('course_of_study') }}" class="form-control" name="course_of_study" placeholder="Course of Study">
+                {% if has_error('course_of_study') %}<span class="text-danger">{{ error('course_of_study') }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">
+                    8. How do you feel right now being unemployed?
+                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="unemployed" value="2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Bad
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="unemployed" value="0">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Very bad
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="unemployed" value="1">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Somehow
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">
+                    9. How long do you wish to work?
+                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="duration" value="1">
+                    <label class="form-check-label" for="exampleRadios2">
+                        1-5 years
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="duration" value="2">
+                    <label class="form-check-label" for="exampleRadios3">
+                        10 years
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="duration" value="0">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Not sure
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">
+                    10. What do you intend to do with the job?
+                </label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="intention" value="2">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Build a career
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="intention" value="1">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Make ends meet
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="intention" value="0">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Just want to work
+                    </label>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

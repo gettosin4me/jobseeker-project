@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        {% endblock %}
+        {% block head %}
+            <link rel="stylesheet" href="style.css" />
+            <title>{% block title %}{% endblock %} - Jobseeker</title>
+        {% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div class="rw mx-auto col-md-8">
+                <div id="content">
+                    <div class="col-md-12">
+                        <ul>
+                            {% for msg in flash('error') %}
+                                <li class="alert alert-danger">{{ msg }}</li>
+                            {% endfor %}
+                        </ul>
+                        <ul>
+                            {% for msg in flash('success') %}
+                                <li class="alert alert-success">{{ msg }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% block content %}{% endblock %}
+                </div>
+                <br />
+                <div id="footer">
+                    {% block footer %}
+                        &copy; Copyright 2011 by <a href="{{ base_url() }}"> TOLA GBADESERE OLUWABAMISE </a>.
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" type="text/javascript"><script>
+    </body>
+</html>

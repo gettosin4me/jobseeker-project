@@ -1,0 +1,108 @@
+{% extends "frontend/layouts/template.html" %}
+
+{% block title %}Jobseeker Home{% endblock %}
+{% block head %}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <form action="{{ current_path() }}" method="post" class="form-horizontal">
+        <h1>Alex Ekwueme Federal University Ndufu-Alike, ikwo  Ebonyi state</h1>
+        <h3>By your name / matric number</h3>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="text" value="{{ val('first_name') }}" class="form-control" name="first_name" placeholder="First name">
+                {% if has_error('first_name') %}<span class="text-danger">{{ error('first_name') }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Middle Name</label>
+                <input type="text" value="{{ val('middle_name') }}" class="form-control" name="middle_name" placeholder="Middle name">
+                {% if has_error('middle_name') %}<span class="text-danger">{{ error('middle_name') }}</span>{% endif %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Last Name</label>
+                <input type="text" value="{{ val('last_name') }}" class="form-control" name="last_name" placeholder="Enter name">
+                {% if has_error('last_name') %}<span class="text-danger">{{ error('last_name') }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Gender</label>
+                <select class="form-control" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">female</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" value="{{ val('email') }}" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                {% if has_error('email') %}<span class="text-danger">{{ error('email') }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Date of Birth</label>
+                <input type="text" value="{{ val('date_of_birth') }}" class="form-control" name="date_of_birth" placeholder="DD-MM-YYYY">
+                {% if has_error('date_of_birth') %}<span class="text-danger">{{ error('date_of_birth') }}</span>{% endif %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">State of Origin</label>
+                <input type="text" value="{{ val('state_of_origin') }}" class="form-control" name="state_of_origin" placeholder="State of Origin">
+                {% if has_error('state_of_origin') %}<span class="text-danger">{{ error('state_of_origin') }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">LGA</label>
+                <input type="text" value="{{ val('lga') }}" class="form-control" name="lga" placeholder="LGA">
+                {% if has_error('lga') %}<span class="text-danger">{{ error('lga') }}</span>{% endif %}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Course of Study</label>
+                <input type="text" value="{{ val('course_of_study') }}" class="form-control" name="course_of_study" placeholder="Course of Study">
+                {% if has_error('course_of_study') %}<span class="text-danger">{{ error('course_of_study') }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Mobile Number</label>
+                <input type="text" value="{{ val('mobile_number') }}" class="form-control" name="mobile_number" placeholder="Mobile Number">
+                {% if has_error('mobile_number') %}<span class="text-danger">{{ error('mobile_number') }}</span>{% endif %}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Address</label>
+            <textarea class="form-control" value="{{ val('address') }}" name="address"></textarea>
+                {% if has_error('address') %}<span class="text-danger">{{ error('address') }}</span>{% endif %}
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="exampleInputEmail1">Highest Qualification</label>
+                <select class="form-control" value="{{ val('highest_qualification') }}" name="highest_qualification">
+                {% if has_error('highest_qualification') %}<span class="text-danger">{{ error('highest_qualification') }}</span>{% endif %}
+                    <option value="ond">OND</option>
+                    <option value="hnd">HND</option>
+                    <option value="bsc">B.Sc</option>
+                    <option value="btech">Btech</option>
+                    <option value="masters">Masters</option>
+                    <option value="phd">PhD</option>
+                </select>
+            </div>
+            
+            <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" value="{{ val('password') }}" class="form-control" name="password" placeholder="Password">
+                {% if has_error('password') %}<span class="text-danger">{{ error('password') }}</span>{% endif %}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br />
+        <small id="passwordHelpInline" class="text-muted">
+            Already have an account? <a href="{{ path_for('app:home') }}">Login</a>
+        </small>
+    </form>
+{% endblock %}

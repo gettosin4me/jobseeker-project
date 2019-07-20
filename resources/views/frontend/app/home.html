@@ -1,0 +1,31 @@
+{% extends "frontend/layouts/template.html" %}
+
+{% block title %}Jobseeker Home{% endblock %}
+{% block head %}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <form action="{{ current_path() }}" method="post">
+        <h1>Ebonyi State University</h1>
+        <h3>By your name / matric number</h3>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" value="{{ val('email') }}" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            {% if has_error('email') %}<span class="text-danger">{{ error('email') }}</span>{% endif %}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" value="{{ val('password') }}" class="form-control" name="password" placeholder="Password">
+            {% if has_error('password') %}<span class="text-danger">{{ error('password') }}</span>{% endif %}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <br />
+        <small id="passwordHelpInline" class="text-muted">
+            Don't have an account yet? <a href="{{ path_for('account:create') }}">Signup</a>
+        </small>
+    </form>
+{% endblock %}

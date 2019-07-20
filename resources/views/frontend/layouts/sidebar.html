@@ -1,0 +1,72 @@
+{% block sidebar %}
+  <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+    <div class="sidebar-sticky">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="/users/dashboard">
+            <span data-feather="home"></span>
+            Dashboard <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/applications">
+            <span data-feather="file"></span>
+            Applications
+          </a>
+        </li>
+      </ul>
+
+      {% if user %}
+          {% if user.is_admin == '1' %}
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Admin</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="/jobs/browse">
+                    <span data-feather="bar-chart-2"></span>
+                    Jobs
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/jobs/add">
+                    <span data-feather="bar-chart-2"></span>
+                    Add Job
+                  </a>
+                </li>
+            </ul>
+          {% endif %}
+      {% endif %}
+
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        <span>Jobs</span>
+        <a class="d-flex align-items-center text-muted" href="#">
+          <span data-feather="plus-circle"></span>
+        </a>
+      </h6>
+      <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+          <a class="nav-link" href="/jobs/search">
+            <span data-feather="file-text"></span>
+            Search
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/jobs/offers">
+            <span data-feather="file-text"></span>
+            Offers
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">
+            <span data-feather="file-text"></span>
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock sidebar %}
