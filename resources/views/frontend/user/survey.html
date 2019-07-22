@@ -15,25 +15,25 @@
                     1. How many time(s) do you get tough feedback from the organization you applied to in the past?
                 </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="feedback" value="1">
+                    <input class="form-check-input" type="radio" name="feedback" value="10">
                     <label class="form-check-label" for="exampleRadios1">
                         Once
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="feedback" value="2">
+                    <input class="form-check-input" type="radio" name="feedback" value="5">
                     <label class="form-check-label" for="exampleRadios2">
                         Twice
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="feedback" value="3">
+                    <input class="form-check-input" type="radio" name="feedback" value="1">
                     <label class="form-check-label" for="exampleRadios3">
                         Thrice
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="feedback" value="4">
+                    <input class="form-check-input" type="radio" name="feedback" value="1">
                     <label class="form-check-label" for="exampleRadios3">
                         More than
                     </label>
@@ -44,13 +44,13 @@
                     2. How do you feel after the feedback?
                 </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="feelings" value="1">
+                    <input class="form-check-input" type="radio" name="feelings" value="5">
                     <label class="form-check-label" for="exampleRadios3">
                         Encouraged
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="feelings" value="0">
+                    <input class="form-check-input" type="radio" name="feelings" value="1">
                     <label class="form-check-label" for="exampleRadios3">
                         Dejected
                     </label>
@@ -69,13 +69,13 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="best" value="2">
+                    <input class="form-check-input" type="radio" name="best" value="5">
                     <label class="form-check-label" for="exampleRadios3">
                         Yes
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="best" value="0">
+                    <input class="form-check-input" type="radio" name="best" value="1">
                     <label class="form-check-label" for="exampleRadios3">
                         No
                     </label>
@@ -85,7 +85,12 @@
                 <label for="exampleInputEmail1">
                     4. What possibly would be missing for not employing you then?
                 </label>
-                <input type="text" class="form-control" name="missing" placeholder="Enter email">
+                <select class="form-control" name="missing">
+                    <option value="5">Skill</option>
+                    <option value="1">Qualification</option>
+                    <option value="1">Poor Performance</option>
+                    <option value="1">Not Sure</option>
+                </select>
             </div>
         </div>
         <div class="form-row">
@@ -93,8 +98,8 @@
                 <label for="exampleInputEmail1">
                     5. Where do you intend to work?
                 </label>
-                <input type="text" value="{{ val('date_of_birth') }}" class="form-control" name="date_of_birth" placeholder="DD-MM-YYYY">
-                {% if has_error('date_of_birth') %}<span class="text-danger">{{ error('date_of_birth') }}</span>{% endif %}
+                <input type="text" value="{{ val('work_environment') }}" class="form-control" name="work_environment" placeholder="DD-MM-YYYY">
+                {% if has_error('work_environment') %}<span class="text-danger">{{ error('work_environment') }}</span>{% endif %}
             </div>
             <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">
@@ -116,19 +121,19 @@
                     8. How do you feel right now being unemployed?
                 </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="unemployed" value="2">
+                    <input class="form-check-input" type="radio" name="unemployed" value="10">
                     <label class="form-check-label" for="exampleRadios2">
                         Bad
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="unemployed" value="0">
+                    <input class="form-check-input" type="radio" name="unemployed" value="5">
                     <label class="form-check-label" for="exampleRadios3">
                         Very bad
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="unemployed" value="1">
+                    <input class="form-check-input" type="radio" name="unemployed" value="5">
                     <label class="form-check-label" for="exampleRadios3">
                         Somehow
                     </label>
@@ -141,19 +146,19 @@
                     9. How long do you wish to work?
                 </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="duration" value="1">
+                    <input class="form-check-input" type="radio" name="duration" value="5">
                     <label class="form-check-label" for="exampleRadios2">
                         1-5 years
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="duration" value="2">
+                    <input class="form-check-input" type="radio" name="duration" value="5">
                     <label class="form-check-label" for="exampleRadios3">
                         10 years
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="duration" value="0">
+                    <input class="form-check-input" type="radio" name="duration" value="1">
                     <label class="form-check-label" for="exampleRadios3">
                         Not sure
                     </label>
@@ -164,7 +169,7 @@
                     10. What do you intend to do with the job?
                 </label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="intention" value="2">
+                    <input class="form-check-input" type="radio" name="intention" value="10">
                     <label class="form-check-label" for="exampleRadios2">
                         Build a career
                     </label>
@@ -176,7 +181,7 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="intention" value="0">
+                    <input class="form-check-input" type="radio" name="intention" value="1">
                     <label class="form-check-label" for="exampleRadios3">
                         Just want to work
                     </label>

@@ -29,7 +29,14 @@
                         <td>{{ index + 1 }}</td>
                         <td>{{ job.company }}</td>
                         <td>{{ job.position }}</td>
-                        <td><span class="text-primary">{{ job.pivot.status | capitalize }}</span></td>
+                        <td>
+                            {% if job.pivot.status == 'approved' %}
+                                <span class="text-success">{{ job.pivot.status | capitalize }}</span>
+                            {% endif %}
+                            {% if job.pivot.status == 'rejected' %}
+                                <span class="text-danger">{{ job.pivot.status | capitalize }}</span>
+                            {% endif %}
+                        </td>
                         <td>2019-07-13 14:00:00</td>
                         <td>
                             <button type="button" class="btn btn-outline-danger btn-sm">Cancel</button>

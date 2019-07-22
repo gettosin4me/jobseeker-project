@@ -34,7 +34,14 @@
                         <td>{{ job.salary_range }}</td>
                         <td>{{ user.course_of_study | capitalize }}</td>
                         <td>{{ user.highest_qualification | capitalize }}</td>
-                        <td>{{ user.pivot.status | capitalize }}</td>
+                        <td>
+                            {% if user.pivot.status == 'approved' %}
+                                <span class="text-success">{{ user.pivot.status }}</span>
+                            {% endif %}
+                            {% if user.pivot.status == 'rejected' %}
+                                <span class="text-danger">{{ user.pivot.status }}</span>
+                            {% endif %}
+                        </td>
                         <td>
                             <div class="dropdown show">
                                 <a class="btn btn-secondary dropdown-toggle text-info" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

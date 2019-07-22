@@ -18,10 +18,10 @@ require __DIR__.'/bootstrap/models.php';
 $app = boot();
 // $app = require __DIR__.'/../bootstrap/view.php';
 
-require __DIR__.'/app/providers/Factory.php';
+require __DIR__.'/bin/Dependency.php';
 require __DIR__.'/app/routes/app.php';
 
-$factory = new \Jobseeker\App\Providers\Factory();
+$factory = new \Jobseeker\Bin\Dependency();
 
 $app->add(new \Slim\Middleware\Session([
     'name' => 'jobseeker_session',

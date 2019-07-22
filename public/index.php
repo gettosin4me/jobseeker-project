@@ -14,12 +14,12 @@ $app = require __DIR__.'/../bootstrap/app.php';
 $container = require __DIR__.'/../bootstrap/database.php';
 // $app = require __DIR__.'/../bootstrap/view.php';
 
-require __DIR__.'/../app/providers/Factory.php';
+require __DIR__.'/../bin/Dependency.php';
 require __DIR__.'/../app/routes/app.php';
 
 // load_variable($app);
 
-$factory = new \Jobseeker\App\Providers\Factory();
+$factory = new \Jobseeker\Bin\Dependency();
 
 $factory->database($app);
 $factory->controller($app);
