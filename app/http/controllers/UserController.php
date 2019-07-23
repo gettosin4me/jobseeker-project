@@ -32,6 +32,8 @@ class UserController
     {
         $user = $this->session->user;
 
+        $user = User::find($user->id);
+
         if ($user->step_completed == 2) {
             $this->flash->addMessage('success', 'Welcome Back, ' . $user->first_name);
             return $response->withRedirect($this->router->pathFor('user:applications'));
@@ -59,6 +61,8 @@ class UserController
     public function applications($request, $response, $args)
     {
         $user = $this->session->user;
+
+        $user = User::find($user->id);
         
         if($user->step_completed == 1) {
             $this->flash->addMessage('error', 'Please, take the survey before you can access dashboard');
@@ -79,6 +83,8 @@ class UserController
     public function dashboard($request, $response, $args)
     {
         $user = $this->session->user;
+
+        $user = User::find($user->id);
         
         if($user->step_completed == 1) {
             $this->flash->addMessage('error', 'Please, take the survey before you can access dashboard');

@@ -32,6 +32,8 @@ class JobController
     {
         $user = $this->session->user;
 
+        $user = User::find($user->id);
+
         $offers = User::find($user->id)->jobs()->wherePivot('status', 'approved')->get();
         
         return $this->view->render($response, 'frontend/job/offers.html', [
@@ -43,6 +45,8 @@ class JobController
     public function create($request, $response, $args)
     {
         $user = $this->session->user;
+
+        $user = User::find($user->id);
 
         if($request->isPost()) {
             $payload = $request->getParsedBody();
@@ -80,6 +84,8 @@ class JobController
     public function search($request, $response, $args)
     {
         $user = $this->session->user;
+
+        $user = User::find($user->id);
         
         // $degrees = [
         //     'ond' => 1,
@@ -108,6 +114,8 @@ class JobController
     {
         $user = $this->session->user;
 
+        $user = User::find($user->id);
+
         $jobs = Job::get();
 
         return $this->view->render($response, 'frontend/job/browse.html', [
@@ -119,6 +127,8 @@ class JobController
     public function apply($request, $response, $args)
     {
         $user = $this->session->user;
+
+        $user = User::find($user->id);
 
         $job = Job::find($args['id']);
 
@@ -157,6 +167,9 @@ class JobController
     public function applications($request, $response, $args)
     {
         $user = $this->session->user;
+
+        $user = User::find($user->id);
+        
         $job = Job::with('users')->find($args['job_id']);
         
         return $this->view->render($response, 'frontend/job/applications.html', [

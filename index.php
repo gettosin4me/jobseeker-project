@@ -36,6 +36,12 @@ $factory->database($app);
 $factory->controller($app);
 $factory->view($app);
 
+$assetUrlFunction = new \Twig_SimpleFunction('assetUrl', function($path) {
+    return '/public/' . $path;
+});
+  
+$app->getContainer()['view']->getEnvironment()->addFunction($assetUrlFunction);
+
 //Load routes
 routes($app);
 

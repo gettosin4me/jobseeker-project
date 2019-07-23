@@ -2,7 +2,7 @@
 <html>
     <head>
         {% block stylesheets %}
-            <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+            <link rel="stylesheet" type="text/css" href="{{ assetUrl('css/bootstrap.css') }}" />
         {% endblock %}
         {% block head %}
             <link rel="stylesheet" href="style.css" />
@@ -30,12 +30,15 @@
                             {% endfor %}
                         </ul>
                     </div>
+                    <div class="col-md-4">
+                        <img src="{{ assetUrl('img/funai_logo.png') }}">
+                    </div>
                     {% block content %}{% endblock %}
                 </div>
                 <br />
                 <div id="footer">
                     {% block footer %}
-                        &copy; Copyright 2011 by <a href="{{ base_url() }}"> TOLA GBADESERE OLUWABAMISE </a>.
+                        &copy; Copyright 2011 by <a href="{{ assetUrl('js/bootstrap.js') }}"> TOLA GBADESERE OLUWABAMISE </a>.
                     {% endblock %}
                 </div>
             </div>
