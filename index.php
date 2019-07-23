@@ -27,13 +27,13 @@ $app->add(new \Slim\Middleware\Session([
     'name' => 'jobseeker_session',
     'autorefresh' => true,
     'lifetime' => '1 hour'
-  ]));
+]));
 
 $factory->flash($app);
+$factory->validator($app);
 $factory->session($app);
 $factory->database($app);
 $factory->controller($app);
-$factory->validator($app);
 $factory->view($app);
 
 //Load routes

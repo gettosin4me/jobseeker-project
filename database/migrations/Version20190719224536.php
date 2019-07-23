@@ -33,6 +33,7 @@ final class Version20190719224536 extends AbstractMigration
             rate VARCHAR(255) DEFAULT NULL,
             salary_range VARCHAR(255) NOT NULL,
             total_candidate_needed INT(11) DEFAULT 15,
+            minimum_qualification VARCHAR(11) DEFAULT `OND`,
             closing_date DATE DEFAULT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

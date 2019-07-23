@@ -52,15 +52,17 @@ class JobController
                 'title' => V::notBlank(),
                 'position' => V::notBlank(),
                 'description' => V::notBlank(),
-                'salary_range' => V::notBlank(),
-                'total_candidate_needed' => V::notBlank(),
+                'salary_range' => V::numeric()->notBlank(),
+                'total_candidate_needed' => V::numeric()->notBlank(),
                 'closing_date' => V::notBlank(),
             ]);
             
             $createdByUserId = ['created_by_user_id' => $user->id];
 
             if(!$this->validator->isValid()) {
-                return $response->withRedirect($this->router->pathFor('job:create'));
+                return $this->view->render($response, 'frontend/job/create.html', [
+                    'user' => $user
+                ]);
             }
 
             $this->db->table('jobs')->insert(array_merge($payload, $createdByUserId));
@@ -78,9 +80,18 @@ class JobController
     public function search($request, $response, $args)
     {
         $user = $this->session->user;
-
-        $jobs = $this->db->table('jobs')->get();
         
+        // $degrees = [
+        //     'ond' => 1,
+        //     'hnd' => 2,
+        //     'bsc' => 3,
+        //     'btech' => 4,
+        //     'masters' => 5,
+        //     'phd' => 6,
+        // ];
+
+        $jobs = Job::where('rate', '<', $user->survey_total)->get();
+
         if($user->step_completed == 1) {
             $this->flash->addMessage('error', 'Please, take the survey before you can access dashboard');
 

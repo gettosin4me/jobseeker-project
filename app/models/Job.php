@@ -9,7 +9,7 @@ class Job extends Model
     protected $table = 'jobs';
     protected $primaryKey = 'id';
     public $fillable = ['id', 'created_by_user_id', 'company', 'title', 'position', 'description', 'rate',
-        'salary_range', 'total_candidate_needed', 'closing_date'        
+        'salary_range', 'total_candidate_needed', 'closing_date', 'minimum_qualification'    
     ];
 
     public function users()

@@ -19,6 +19,11 @@
 
     <!-- Custom styles for this template -->
     <link href="dashboard.css" rel="stylesheet">
+    <style>
+      ul {
+        list-style: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -26,6 +31,18 @@
     <div class="container-fluid">
       <div class="row">
         {% include 'frontend/layouts/sidebar.html' %}
+        <div style="position:absolute;left:50%">
+          <ul>
+                {% for msg in flash('error') %}
+                    <li class="alert alert-danger">{{ msg }}</li>
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for msg in flash('success') %}
+                    <li class="alert alert-success">{{ msg }}</li>
+                {% endfor %}
+            </ul>
+        </div>
         {% block app_content %} {% endblock %}
       </div>
     </div>

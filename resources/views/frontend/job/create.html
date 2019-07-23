@@ -59,6 +59,28 @@
                     {% if has_error('total_candidate_needed') %}<span class="text-danger">{{ error('total_candidate_needed') }}</span>{% endif %}
                 </div>
             </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Minimum Qualification</label>
+                    <select class="form-control" value="{{ val('minimum_qualification') }}" name="minimum_qualification">
+                        <option value="ond">OND</option>
+                        <option value="hnd">HND</option>
+                        <option value="bsc">B.Sc</option>
+                        <option value="btech">Btech</option>
+                        <option value="masters">Masters</option>
+                        <option value="phd">PhD</option>
+                    </select>
+                    {% if has_error('salary_range') %}<span class="text-danger">{{ error('salary_range') }}</span>{% endif %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Type of Candidate Needed</label>
+                    <select class="form-control" value="{{ val('rate') }}" name="rate">
+                        <option value="0">Desperate Job Seeker</option>
+                        <option value="50">Career Builder</option>
+                    </select>
+                    {% if has_error('rate') %}<span class="text-danger">{{ error('rate') }}</span>{% endif %}
+                </div>
+            </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

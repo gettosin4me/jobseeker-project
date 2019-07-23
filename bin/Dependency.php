@@ -41,9 +41,8 @@ class Dependency {
             $view->addExtension(
                 new \Awurth\SlimValidation\ValidatorExtension($container['validator'])
             );
-            $view->addExtension(new \Knlv\Slim\Views\TwigMessages(
-                new \Slim\Flash\Messages()
-            ));
+
+            $view->addExtension(new \Knlv\Slim\Views\TwigMessages($container['flash']));
 
             // Instantiate and add Slim specific extension
             $router = $container->get('router');

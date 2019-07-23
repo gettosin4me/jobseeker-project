@@ -34,7 +34,7 @@ class HomeController
         ]);
 
         if(!$this->validator->isValid()) {
-          return $response->withRedirect('/login');
+          return $this->view->render($response, 'frontend/app/home.html');
         }
 
         $password = md5($payload['password']);
@@ -43,7 +43,7 @@ class HomeController
 
         if (!$user) {
           $this->flash->addMessage('error', 'Invalid Credentials');
-          return $response->withRedirect('/');
+          return $response->withRedirect($this->router->pathFor('app:home'));
         }
 
         $this->session->set('user', $user);
@@ -55,8 +55,8 @@ class HomeController
 
         if ($user->step_completed == 2) {
           $this->flash->addMessage('success', 'Welcome Back, ' . $user->first_name);
-          return $response->withRedirect($this->router->pathFor('user:dashboard'));
-      }
+          return $response->withRedirect($this->router->pathFor('user:applications'));
+        }
         // print_r($user);exit;
         
       }
@@ -88,7 +88,7 @@ class HomeController
         ]);
         
         if(!$this->validator->isValid()) {
-          return $response->withRedirect('/create/account');
+          return $this->view->render($response, 'frontend/app/signup.html');
         }
 
         $password = ['password' => md5($payload['password'])];
@@ -96,7 +96,8 @@ class HomeController
         $this->db->table('users')->insert(array_merge($payload, $password));
 
         $this->flash->addMessage('success', 'Account created successfully');
-        return $response->withRedirect('/');
+
+        return $response->withRedirect($this->router->pathFor('app:home'));
         
       }
 
@@ -107,11 +108,11 @@ class HomeController
     {
         if(!$this->session->user) {
           $this->flash->addMessage('success', 'Successfully logged out');
-          return $response->withRedirect('/');
+          return $response->withRedirect($this->router->pathFor('app:home'));
         }
 
         $this->session->delete('user');
         $this->flash->addMessage('success', 'Successfully logged out');
-        return $response->withRedirect('/');
-    }
+        return $response->withRedirect($this->router->pathFor('app:home'));
+      }
 }

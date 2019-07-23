@@ -85,7 +85,7 @@
                 <label for="exampleInputEmail1">
                     4. What possibly would be missing for not employing you then?
                 </label>
-                <select class="form-control" name="missing">
+                <select class="form-control" name="lapses">
                     <option value="5">Skill</option>
                     <option value="1">Qualification</option>
                     <option value="1">Poor Performance</option>
@@ -98,14 +98,37 @@
                 <label for="exampleInputEmail1">
                     5. Where do you intend to work?
                 </label>
-                <input type="text" value="{{ val('work_environment') }}" class="form-control" name="work_environment" placeholder="DD-MM-YYYY">
+                <select name="work_environment" class="form-control">
+                    <option value="1">Accountancy</option>
+                    <option value="1">banking and finance.</option>
+                    <option value="1">Business, consulting and management.</option>
+                    <option value="1">Charity and voluntary work.</option>
+                    <option value="1">Creative arts and design.</option>
+                    <option value="1">Energy and utilities.</option>
+                    <option value="1">Engineering and manufacturing.</option>
+                    <option value="1">Environment and agriculture.</option>
+                    <option value="1">Healthcare.</option>
+                    <option value="1">ICT</option>
+                </select>
                 {% if has_error('work_environment') %}<span class="text-danger">{{ error('work_environment') }}</span>{% endif %}
             </div>
             <div class="form-group col-md-6">
                 <label for="exampleInputEmail1">
                     6. Owing to your personality, where do you think you fit?
                 </label>
-                <input type="text" class="form-control" name="missing" placeholder="Enter email">
+                <select name="missing" class="form-control">
+                    <option value="1">Accountancy</option>
+                    <option value="1">banking and finance.</option>
+                    <option value="1">Business, consulting and management.</option>
+                    <option value="1">Charity and voluntary work.</option>
+                    <option value="1">Creative arts and design.</option>
+                    <option value="1">Energy and utilities.</option>
+                    <option value="1">Engineering and manufacturing.</option>
+                    <option value="1">Environment and agriculture.</option>
+                    <option value="1">Healthcare.</option>
+                    <option value="1">ICT</option>
+                </select>
+                {% if has_error('work_environment') %}<span class="text-danger">{{ error('missing') }}</span>{% endif %}
             </div>
         </div>
         <div class="form-row">
@@ -113,7 +136,18 @@
                 <label for="exampleInputEmail1">
                     7. Considering your background and not leaving your personality out, what kind of job do you want now?
                 </label>
-                <input type="text" value="{{ val('course_of_study') }}" class="form-control" name="course_of_study" placeholder="Course of Study">
+                <select name="course_of_study" class="form-control">
+                    <option value="1">Accountancy</option>
+                    <option value="1">banking and finance.</option>
+                    <option value="1">Business, consulting and management.</option>
+                    <option value="1">Charity and voluntary work.</option>
+                    <option value="1">Creative arts and design.</option>
+                    <option value="1">Energy and utilities.</option>
+                    <option value="1">Engineering and manufacturing.</option>
+                    <option value="1">Environment and agriculture.</option>
+                    <option value="1">Healthcare.</option>
+                    <option value="1">ICT</option>
+                </select>
                 {% if has_error('course_of_study') %}<span class="text-danger">{{ error('course_of_study') }}</span>{% endif %}
             </div>
             <div class="form-group col-md-6">

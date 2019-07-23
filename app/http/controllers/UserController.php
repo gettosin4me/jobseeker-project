@@ -32,6 +32,25 @@ class UserController
     {
         $user = $this->session->user;
 
+        if ($user->step_completed == 2) {
+            $this->flash->addMessage('success', 'Welcome Back, ' . $user->first_name);
+            return $response->withRedirect($this->router->pathFor('user:applications'));
+        }
+
+        if($request->isPost()) {
+            $userModel = User::find($user->id);
+            $userModel->update([
+                'survey_total' => array_sum(array_values($request->getParsedBody())),
+                'step_completed' => 2
+            ]);
+
+            $user = $this->db->table('users')->where('id', $user->id)->first();
+            $user = $this->session->set('user', $user);
+
+            $this->flash->addMessage('success', 'Thank you for completing our survey, ' . $user->first_name);
+            return $response->withRedirect($this->router->pathFor('user:applications'));
+        }
+
         return $this->view->render($response, 'frontend/user/survey.html', [
             'user' => $user
         ]);
