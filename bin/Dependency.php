@@ -62,6 +62,20 @@ class Dependency {
         };
     }
 
+    public function setEnvironment($app)
+    {
+        $container = $app->getContainer();
+
+        $container['environment'] = function () {
+            // Fix the Slim 3 subdirectory issue (#1529)
+            // This fix makes it possible to run the app from localhost/slim3-app
+            $scriptName = $_SERVER['SCRIPT_NAME'];
+            $_SERVER['REAL_SCRIPT_NAME'] = $scriptName;
+            $_SERVER['SCRIPT_NAME'] = dirname(dirname($scriptName)) . '/' . basename($scriptName);
+            return new Slim\Http\Environment($_SERVER);
+        };
+    }
+
     public function database($app)
     {
         $container = $app->getContainer();
