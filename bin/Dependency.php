@@ -9,6 +9,7 @@ class Dependency {
     public function controller($app) 
     {
         $container = $app->getContainer();
+        $container['upload_directory'] = __DIR__ . '/../public/uploads';
         $controllers = require_once __DIR__ . '/../bootstrap/controllers.php';
         foreach ($controllers as $key => $value) {
             if (!is_array($value)) {

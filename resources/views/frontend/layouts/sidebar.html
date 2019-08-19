@@ -41,25 +41,58 @@
           {% endif %}
       {% endif %}
 
+      {% if user %}
+          {% if user.is_admin == '0' %}
       <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-        <span>Jobs</span>
+            <span>Profile</span>
+            <a class="d-flex align-items-center text-muted" href="#">
+              <span data-feather="plus-circle"></span>
+            </a>
+          </h6>
+          <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="/user/upload_cv">
+                  <span data-feather="bar-chart-2"></span>
+                  Upload CV
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/jobs/add">
+                  <span data-feather="bar-chart-2"></span>
+                  Add SSCE
+                </a>
+              </li>
+          </ul>
+          {% endif %}
+      {% endif %}
+
+      <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        {% if user %}
+          {% if user.is_admin == '0' %}
+            <span>Jobs</span>
+          {% endif %}
+        {% endif %}
         <a class="d-flex align-items-center text-muted" href="#">
           <span data-feather="plus-circle"></span>
         </a>
       </h6>
       <ul class="nav flex-column mb-2">
-        <li class="nav-item">
-          <a class="nav-link" href="/jobs/search">
-            <span data-feather="file-text"></span>
-            Search
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/jobs/offers">
-            <span data-feather="file-text"></span>
-            Offers
-          </a>
-        </li>
+      {% if user %}
+          {% if user.is_admin == '0' %}
+            <li class="nav-item">
+              <a class="nav-link" href="/jobs/search">
+                <span data-feather="file-text"></span>
+                Search
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/jobs/offers">
+                <span data-feather="file-text"></span>
+                Offers
+              </a>
+            </li>
+          {% endif %}
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="/logout">
             <span data-feather="file-text"></span>

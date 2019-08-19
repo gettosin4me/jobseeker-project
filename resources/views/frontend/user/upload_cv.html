@@ -1,0 +1,28 @@
+{% extends "frontend/layouts/app.html" %}
+
+{% block title %}Upload CV{% endblock %}
+{% block head %}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block app_content %}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Upload CV</h1>
+        </div>
+        <form method="post" enctype="multipart/form-data" action="{{ current_path() }}">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+              </div>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01"
+                  aria-describedby="inputGroupFileAddon01" name="cv">
+                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+              </div>
+            </div><br/>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </main>
+{% endblock %}

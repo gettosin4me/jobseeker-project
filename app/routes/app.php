@@ -8,6 +8,7 @@ function routes ($app) {
     $app->map(['GET', 'POST'], '/users/survey', 'UserController:survey')->setName('user:survey');
     $app->map(['GET', 'POST'], '/users/dashboard', 'UserController:dashboard')->setName('user:dashboard');
     $app->map(['GET', 'POST'], '/users/applications', 'UserController:applications')->setName('user:applications');
+    $app->map(['GET', 'POST'], '/user/upload_cv', 'UserController:upload_cv')->setName('user:upload_cv');
     $app->map(['GET', 'POST'], '/jobs/browse', 'JobController:browse')->setName('job:browse');
     $app->map(['GET', 'POST'], '/jobs/offers', 'JobController:offers')->setName('job:offers');
     $app->map(['GET', 'POST'], '/jobs/search', 'JobController:search')->setName('job:search');

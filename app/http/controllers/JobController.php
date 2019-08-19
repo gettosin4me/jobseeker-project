@@ -96,7 +96,7 @@ class JobController
         //     'phd' => 6,
         // ];
 
-        $jobs = Job::where('rate', '<', $user->survey_total)->get();
+        $jobs = Job::where('rate', '<', $user->survey_total)->where('closing_date', '>=', date('Y-m-d'))->get();
 
         if($user->step_completed == 1) {
             $this->flash->addMessage('error', 'Please, take the survey before you can access dashboard');

@@ -19,8 +19,9 @@
                   <th>Applicant Name</th>
                   <th>Job Title</th>
                   <th>Range</th>
-                  <th>Applicant Course of Study</th>
-                  <th>Applicant Highest Qualification</th>
+                  <th>Course of Study</th>
+                  <th>Highest Qualification</th>
+                  <th>CV</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
@@ -34,6 +35,13 @@
                         <td>{{ job.salary_range }}</td>
                         <td>{{ user.course_of_study | capitalize }}</td>
                         <td>{{ user.highest_qualification | capitalize }}</td>
+                        <td>
+                            {% if user.cv != null %}
+                                <a target="_blank" href="{{ user.cv_path }}">CV</a>
+                            {% else %}
+                                N\A
+                            {% endif %}
+                        </td>
                         <td>
                             {% if user.pivot.status == 'approved' %}
                                 <span class="text-success">{{ user.pivot.status }}</span>
